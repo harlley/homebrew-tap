@@ -1,6 +1,6 @@
 cask "fluencylog" do
-  version "0.1.4"
-  sha256 "274efb73ea0a099f4d9196ec6c1a95e559eaafcd7f5699bb8ee146ce0cfe4007"
+  version "0.2.0"
+  sha256 "b4a5eb58c21eff0e8598bd2ca07871919ee9ee27ac468b6469f20b87892c0345"
 
   url "https://github.com/harlley/fluencylog/releases/download/v#{version}/FluencyLog-#{version}-macos.zip"
   name "FluencyLog"
