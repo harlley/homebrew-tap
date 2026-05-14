@@ -29,6 +29,14 @@ class Todomd < Formula
     bin.install Dir["todomd-*"].first => "todomd"
   end
 
+  def caveats
+    <<~EOS
+      Before uninstalling, run `todomd uninstall` to remove the skills and
+      slash commands that `todomd init` placed under ~/.claude, ~/.config/opencode,
+      and ~/.pi. `brew uninstall todomd` only removes the binary itself.
+    EOS
+  end
+
   test do
     assert_match version.to_s, shell_output("#{bin}/todomd version")
   end
