@@ -4,11 +4,11 @@ cask "fluencylog" do
 
   url "https://pub-94ef814e66fc41739ec9d9211dc07e04.r2.dev/FluencyLog-#{version}-macos.zip"
   name "FluencyLog"
-  desc "Native macOS English fluency coach with hotkey popup"
+  desc "English fluency coach with hotkey popup"
   homepage "https://github.com/harlley/fluencylog"
 
-  depends_on macos: :sonoma
   auto_updates false
+  depends_on macos: :sonoma
 
   app "FluencyLog.app"
 
