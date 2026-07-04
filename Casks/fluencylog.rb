@@ -12,6 +12,13 @@ cask "fluencylog" do
 
   app "FluencyLog.app"
 
+  postflight do
+    system_command "/usr/bin/codesign",
+                   args: ["--force", "--deep", "--sign", "-", "#{appdir}/FluencyLog.app"]
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/FluencyLog.app"]
+  end
+
   zap trash: [
     "~/Library/Application Support/com.fluencylog",
     "~/Library/Preferences/com.fluencylog.plist",
