@@ -1,27 +1,27 @@
 class Todomd < Formula
   desc "Agentic task manager — turns TODO.md into a visual task board"
   homepage "https://github.com/harlley/todomd"
-  version "0.9.9"
+  version "0.9.10"
 
   on_macos do
     on_intel do
       url "https://dl.todomd.dev/v#{version}/todomd-darwin-amd64"
-      sha256 "15bfcf9dbf28d4fd918b63e4ad376688d1f0099fd78a10eca10071a4f14a0b73"
+      sha256 "c5f4f74ef0766cfb105670ab0052b5024eaa301c93cf2896f9cfdfc1d4300fa2"
     end
     on_arm do
       url "https://dl.todomd.dev/v#{version}/todomd-darwin-arm64"
-      sha256 "f01a2289edafb51900d7ee0943578c3708454436796b096886f6f6e432972786"
+      sha256 "2124034714cbb093e7a29724e1f7a417c0a75839ece66b124ef12cad587b9292"
     end
   end
 
   on_linux do
     on_intel do
       url "https://dl.todomd.dev/v#{version}/todomd-linux-amd64"
-      sha256 "e4b6af02faa8f5ca89e562817e20fdabaea2e09f351ea41eaf463b630c240f6e"
+      sha256 "7ede05eba8ae5fa092a553bdb32b0177335c605dbc1f38d34d1b654b7077dd2c"
     end
     on_arm do
       url "https://dl.todomd.dev/v#{version}/todomd-linux-arm64"
-      sha256 "587072a9833803056d7b94110d43ce944c80bdc11e89623719825c9930221895"
+      sha256 "3ead614c0bd5f657009d18108fe95f87a4afd8424a7991ab530ee6731ea86538"
     end
   end
 
