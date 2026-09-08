@@ -1,32 +1,33 @@
 class Todomd < Formula
   desc "Agentic task manager — turns TODO.md into a visual task board"
   homepage "https://github.com/harlley/todomd"
-  version "0.9.12"
+  version "1.0.0-rc.1"
 
   on_macos do
     on_intel do
       url "https://dl.todomd.dev/v#{version}/todomd-darwin-amd64"
-      sha256 "ce188fb7b2f77befac8d136e977b39659caa2322ab960daf89bfc234f7db279a"
+      sha256 "4557a18d0e8b109ab0a08e6b93d109a8bd9e9d2f32fa42017267902d09636093"
     end
     on_arm do
       url "https://dl.todomd.dev/v#{version}/todomd-darwin-arm64"
-      sha256 "3a96306a35f64f8d25cfb78a6d8e2ff6fd66013f72721301c0ec42160d45d7b2"
+      sha256 "2e16594113929dfe82b7b19dadfe0e40683cb6095623d43f77dbda7feb118568"
     end
   end
 
   on_linux do
     on_intel do
       url "https://dl.todomd.dev/v#{version}/todomd-linux-amd64"
-      sha256 "aa4989ac19e16772378a15fb0dc8b6f0a4cc4ecb84e7c2e3bf2287e4b3b9c998"
+      sha256 "f0468de35d3954882729dba9ef88948323940fa5cfe323d10964305d49942180"
     end
     on_arm do
       url "https://dl.todomd.dev/v#{version}/todomd-linux-arm64"
-      sha256 "156603080285edd57bc51903e2ab06f0a90657f37f8ffd68ef5c8b5fbad37d0e"
+      sha256 "2413deb95d6803bac5e8070d7b578c712e62f30fc7740f364773df4af0b9991b"
     end
   end
 
   def install
-    bin.install Dir["todomd-*"].first => "todomd"
+    bin.install cached_download => "todomd"
+    chmod 0755, bin/"todomd"
   end
 
   def caveats
