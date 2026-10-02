@@ -1,44 +1,40 @@
 class Todomd < Formula
-  desc "Agentic task manager — turns TODO.md into a visual task board"
+  desc "Web and terminal boards for shared Markdown task lists"
   homepage "https://github.com/harlley/todomd"
-  version "1.0.0-rc.1"
+  version "1.0.0-rc.2"
+  license "MIT"
 
   on_macos do
     on_intel do
-      url "https://dl.todomd.dev/v#{version}/todomd-darwin-amd64"
-      sha256 "4557a18d0e8b109ab0a08e6b93d109a8bd9e9d2f32fa42017267902d09636093"
+      url "https://dl.todomd.dev/v#{version}/todomd-darwin-amd64.tar.gz"
+      sha256 "48c1da4d083166265a6d8f5c330c0bbe88a3fcc894d953bcbc0055d02a559d63"
     end
     on_arm do
-      url "https://dl.todomd.dev/v#{version}/todomd-darwin-arm64"
-      sha256 "2e16594113929dfe82b7b19dadfe0e40683cb6095623d43f77dbda7feb118568"
+      url "https://dl.todomd.dev/v#{version}/todomd-darwin-arm64.tar.gz"
+      sha256 "cb0c1a2611569bf97cbe034f51b33e3779e1d277b64e067cad85607c78b3d8a8"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://dl.todomd.dev/v#{version}/todomd-linux-amd64"
-      sha256 "f0468de35d3954882729dba9ef88948323940fa5cfe323d10964305d49942180"
+      url "https://dl.todomd.dev/v#{version}/todomd-linux-amd64.tar.gz"
+      sha256 "613a7b43f06b499f0c096bb759c17735bea3719cfe7169a64cac51e609d63427"
     end
     on_arm do
-      url "https://dl.todomd.dev/v#{version}/todomd-linux-arm64"
-      sha256 "2413deb95d6803bac5e8070d7b578c712e62f30fc7740f364773df4af0b9991b"
+      url "https://dl.todomd.dev/v#{version}/todomd-linux-arm64.tar.gz"
+      sha256 "f7ddaea5acdcd5c0820b6ca0104b6fbeb095c4705ce24639a3a0e17ff325fd93"
     end
   end
 
   def install
-    bin.install cached_download => "todomd"
+    bin.install "todomd"
+    pkgshare.install "LICENSE"
     chmod 0755, bin/"todomd"
   end
 
-  def caveats
-    <<~EOS
-      Before uninstalling, run `todomd uninstall` to remove the skills and
-      slash commands that `todomd init` placed under ~/.claude, ~/.config/opencode,
-      and ~/.pi. `brew uninstall todomd` only removes the binary itself.
-    EOS
-  end
-
   test do
-    assert_match version.to_s, shell_output("#{bin}/todomd version")
+    assert_equal version.to_s, shell_output("#{bin}/todomd version").strip
+    (testpath/"TODO.md").write "### Work <!-- id:list01 -->\n- [ ] Task <!-- id:task01 -->\n"
+    assert_match ": ok", shell_output("#{bin}/todomd lint #{testpath}/TODO.md")
   end
 end
